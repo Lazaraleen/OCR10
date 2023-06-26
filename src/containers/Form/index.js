@@ -4,7 +4,8 @@ import Field, { FIELD_TYPES } from "../../components/Field";
 import Select from "../../components/Select";
 import Button, { BUTTON_TYPES } from "../../components/Button";
 
-const mockContactApi = () => new Promise((resolve) => { setTimeout(resolve, 1000); })
+// Reduire le setTimeout de 1000 à 500 pour résoudre le dernier bug qui se produit au niveau du bouton En cours et Envoyer
+const mockContactApi = () => new Promise((resolve) => { setTimeout(resolve, 500); })
 
 const Form = ({ onSuccess, onError }) => {
   const [sending, setSending] = useState(false);
@@ -16,9 +17,10 @@ const Form = ({ onSuccess, onError }) => {
       try {
         await mockContactApi();
         setSending(false);
+        onSuccess();     // Si l'appel à l'API réussit
       } catch (err) {
         setSending(false);
-        onError(err);
+        onError(err);   // Si l'appel à l'API échoue
       }
     },
     [onSuccess, onError]

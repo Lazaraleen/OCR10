@@ -14,7 +14,10 @@ import { useData } from "../../contexts/DataContext";
 
 
 const Page = () => {
-  const {last} = useData()
+  // Mettre le useData sur {data} puis rajouter la fonction de tri sur "last" afin d'avoir le dernier événèment
+  const {data} = useData();
+  const last = data?.events.sort((evtA, evtB) =>    
+    new Date(evtA.date) < new Date(evtB.date) ? 1 : -1)[0];
   return <>
     <header>
       <Menu />

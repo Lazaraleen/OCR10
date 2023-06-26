@@ -1,6 +1,40 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import Home from "./index";
 
+const data = {
+  "events": [
+    {
+        "id": 1,
+        "type": "conférence",
+        "date": "2022-04-29T20:28:45.744Z",
+        "title": "User&product MixUsers",
+        "cover": "/images/alexandre-pellaes-6vAjp0pscX0-unsplash.png",
+        "description": "Présentation des nouveaux usages UX.",
+        "nb_guesses": 900,
+        "periode": "14-15-16 Avril",
+        "prestations": [
+            "1 espace d’exposition",
+            "1 scéne principale",
+            "1 espace de restaurations"
+        ]
+    },
+    {
+        "id": 2,
+        "type": "expérience digitale",
+        "date": "2022-01-29T20:28:45.744Z",
+        "title": "#DigitonPARIS",
+        "cover": "/images/charlesdeluvio-wn7dOzUh3Rs-unsplash.png",
+        "description": "Présentation des outils analytics aux professionnels du secteur ",
+        "nb_guesses": 1300,
+        "periode": "24-25-26 Février",
+        "prestations": [
+            "1 espace d’exposition",
+            "1 scéne principale",
+            "1 site web dédié"
+        ]
+    }]
+}
+
 describe("When Form is created", () => {
   it("a list of fields card is displayed", async () => {
     render(<Home />);
@@ -36,7 +70,9 @@ describe("When a page is created", () => {
     // to implement
   })
   it("a footer is displayed", () => {
-    // to implement
+    const {container} = render(<Home />);
+    const footerExist = container.querySelector("footer");
+    expect(footerExist).toBeDefined();
   })
   it("an event card, with the last event, is displayed", () => {
     // to implement
