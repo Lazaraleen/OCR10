@@ -37,13 +37,13 @@ const EventList = () => {
       {data === null ? (
         "loading"
       ) : (
-        <article data-testid="listOfEvent">
+        <>
           <h3 className="SelectTitle">Catégories</h3>
           <Select
             selection={Array.from(typeList)}
             onChange={(value) => (value ? changeType(value) : changeType(null))}
           />
-          <div id="events" className="ListContainer">
+          <div id="events" className="ListContainer" data-testid="listOfEvent">
             {filteredEvents.map((event) => (
               <Modal key={event.id} Content={<ModalEvent event={event} />}>
                 {({ setIsOpened }) => (
@@ -66,7 +66,7 @@ const EventList = () => {
               </a>
             ))}
           </div>
-        </article>
+        </>
       )}
     </>
   );
