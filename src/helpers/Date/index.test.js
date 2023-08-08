@@ -12,7 +12,7 @@ describe("Date helper", () => {
             expect(month).toBe("janvier");
         });
         it("the function return juillet for 2022-07-08 as date", () => {
-            // Test unitaire sur le mois de Février
+            // Test unitaire sur le mois de Juillet
             const date = new Date("2022-07-08");
             const month = getMonth(date);
             expect(month).toBe("juillet");
